@@ -3,6 +3,6 @@ class GenreDecorator < Draper::Decorator
   decorates_association :movies
 
   def number_of_movies
-    object.movies.count
+    object.movies.size
   end
 end
