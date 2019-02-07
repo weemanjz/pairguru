@@ -1,0 +1,15 @@
+HTTP/1.1 404 Not Found
+Server: Cowboy
+Date: Thu, 07 Feb 2019 16:41:31 GMT
+Connection: keep-alive
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Type: application/json; charset=utf-8
+Cache-Control: no-cache
+X-Request-Id: 2c3a5032-766c-4a8c-9797-8e4d7a49d11b
+X-Runtime: 0.025232
+Transfer-Encoding: chunked
+Via: 1.1 vegur
+
+{"message":"Couldn't find Movie"}

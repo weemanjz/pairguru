@@ -1,5 +1,14 @@
-%h1= @movie.title
-.jumbotron
-  = @movie.description
+.media
+  .media-left
+    %img.img-rounded.movie-cover{ src: @movie.cover }
+  .media-body
+    %h1.media-heading
+      = @movie.title
+      %small.pull-right
+        Rating:
+        = @movie.rating
+    .jumbotron
+      = @movie.description
+
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
