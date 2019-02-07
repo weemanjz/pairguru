@@ -1,2 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.movie-cover {
+  height: 150px;
+}
+
+.media-left {
+  .movie-cover {
+    height: 250px;
+  }
+}
