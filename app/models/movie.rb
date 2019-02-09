@@ -14,4 +14,6 @@
 
 class Movie < ApplicationRecord
   belongs_to :genre, counter_cache: true
+
+  validates_with TitleBracketsValidator
 end
