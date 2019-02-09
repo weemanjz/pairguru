@@ -14,6 +14,8 @@ gem "uglifier"
 
 gem "active_model_serializers", "~> 0.10.8"
 
+gem "sidekiq", "~> 5.2.5"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 
