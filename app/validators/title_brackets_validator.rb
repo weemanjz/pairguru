@@ -2,7 +2,7 @@ class TitleBracketsValidator < ActiveModel::Validator
   def validate(record)
     return if BracketChecker.new(record.title).valid?
 
-    record.errors["title"] << "is invalid"
+    record.errors["title"] << "Title is invalid"
   end
 
   class BracketChecker

@@ -1,0 +1,12 @@
+.panel.panel-default{ id: ("my-comment" if current_user&.id == comment.user_id) }
+  .panel-heading
+    .pull-right
+      %span= comment.created_at.strftime("%-d %b %Y %k:%M")
+
+      - if current_user&.id == comment.user_id
+        = link_to [comment.movie, comment], remote: true, method: :delete, class: 'delete-link', title: 'Delete' do
+          %span.glyphicon.glyphicon-remove
+    %h3.panel-title= comment.user.name
+
+  .panel-body
+    = comment.text

@@ -30,4 +30,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  errors:
+    format: "%{message}"
+    messages:
+      blank: "%{attribute} can't be blank"
+  activerecord:
+    errors:
+      models:
+        comment:
+          attributes:
+            user_id:
+              taken: "You have already commented on this movie"

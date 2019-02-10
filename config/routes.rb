@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     collection do
       get :export
     end
+
+    resources :comments, only: [:create, :destroy]
   end
 
   namespace :api, defaults: { format: :json } do

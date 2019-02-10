@@ -1,0 +1,3 @@
+<% if @comment %>
+  $("#my-comment").replaceWith("<%= j render("form", comment: Comment.new(movie_id: @movie.id)) %>");
+<% end %>
