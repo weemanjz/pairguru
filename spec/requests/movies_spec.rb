@@ -46,6 +46,64 @@ describe "Movies requests", type: :request do
     end
   end
 
+  describe "show movie" do
+    let!(:movie) { create(:movie) }
+
+    it "displays movies' title" do
+      visit movie_path(movie)
+      expect(page).to have_selector("h1", text: movie.title)
+    end
+
+    it "displays rating" do
+      visit movie_path(movie)
+      expect(page).to have_selector("small", text: "Rating: 9.2")
+    end
+
+    describe "comments section" do
+      let!(:comment) { create(:comment, movie: movie) }
+      let(:user) { comment.user }
+
+      it "displays comment's author" do
+        visit movie_path(movie)
+        expect(page).to have_selector("h3", text: user.name)
+      end
+
+      it "displays comment" do
+        visit movie_path(movie)
+        expect(page).to have_selector("div", text: comment.text)
+      end
+
+      it "does not display form to guest" do
+        visit movie_path(movie)
+        expect(page).not_to have_selector("#comments .form")
+      end
+
+      context "with logged in user" do
+        before do
+          sign_in current_user
+        end
+
+        context "when logged in user already commented to movie" do
+          let(:current_user) { user }
+
+          it "does not display form" do
+            visit movie_path(movie)
+            expect(page).not_to have_selector("#comments .form")
+          end
+        end
+
+        context "when logged in user does not commented to movie yet" do
+          let(:current_user) { create(:user) }
+
+          it "does not display form" do
+            visit movie_path(movie)
+            expect(page).to have_selector("#comments .form")
+          end
+        end
+      end
+    end
+  end
+
   describe "movies export" do
     context "when user is signed in" do
       let(:user) { create(:user) }

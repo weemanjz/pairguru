@@ -10,5 +10,12 @@
     .jumbotron
       = @movie.description
 
-- if user_signed_in?
-  %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+    - if user_signed_in?
+      %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+
+#comments
+  %h3 Comments
+  - if user_signed_in? && !@movie.commented_by?(current_user)
+    = render "comments/form", comment: Comment.new(movie_id: @movie.id)
+
+  = render @comments

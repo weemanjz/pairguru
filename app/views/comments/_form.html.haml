@@ -1,0 +1,12 @@
+.form
+  - if comment.errors.any?
+    .alert.alert-danger
+      %ul.list-unstyled
+        - comment.errors.full_messages.each do |error|
+          %li= error
+
+  = form_for comment, url: movie_comments_path(movie_id: comment.movie_id), remote: true do |f|
+    .form-group
+      = f.label :text, "Add your comment"
+      = f.text_area :text, class: 'form-control', rows: 3
+    = f.submit "Submit", class: "btn btn-primary"

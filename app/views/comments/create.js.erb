@@ -1,0 +1,6 @@
+let commentForm = $("#comments .form")
+<% if @comment.errors.any? %>
+  commentForm.replaceWith("<%= j render("form", comment: @comment) %>");
+<% else %>
+  commentForm.replaceWith("<%= j render(@comment) %>");
+<% end %>
